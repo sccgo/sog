@@ -1,0 +1,287 @@
+<!DOCTYPE html><html dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>عزنا بسبتمبر</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e2e2e2",
+                        "on-surface": "#1b1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed-variant": "#454747",
+                        "secondary-fixed": "#e2e2e2",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f3f3f3",
+                        "inverse-surface": "#303030",
+                        "outline-variant": "#cfc4c5",
+                        "primary": "#000000",
+                        "on-surface-variant": "#4c4546",
+                        "on-secondary-container": "#616363",
+                        "outline": "#7e7576",
+                        "on-tertiary-container": "#848484",
+                        "surface-dim": "#dadada",
+                        "secondary-container": "#dfe0e0",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface-tint": "#5e5e5e",
+                        "surface-bright": "#f9f9f9",
+                        "on-background": "#1b1b1b",
+                        "surface": "#f9f9f9",
+                        "secondary": "#5d5f5f",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "inverse-primary": "#c6c6c6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#848484",
+                        "background": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-high": "#e8e8e8",
+                        "primary-fixed": "#e2e2e2",
+                        "primary-container": "#1b1b1b",
+                        "on-primary-fixed-variant": "#474747",
+                        "tertiary": "#000000",
+                        "tertiary-container": "#1b1b1b",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["IBM Plex Sans Arabic"],
+                        "label-md": ["IBM Plex Sans Arabic"],
+                        "display-lg": ["IBM Plex Sans Arabic"],
+                        "caption": ["IBM Plex Sans Arabic"],
+                        "body-lg": ["IBM Plex Sans Arabic"],
+                        "headline-md": ["IBM Plex Sans Arabic"],
+                        "display-lg-mobile": ["IBM Plex Sans Arabic"],
+                        "headline-lg": ["IBM Plex Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-primary text-on-primary font-body-md antialiased overflow-x-hidden selection:bg-surface-container-highest selection:text-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-primary border-b border-on-primary/10 transition-all duration-300 ease-in-out md:px-margin-desktop px-margin-mobile">
+<div class="flex items-center h-10">
+    <video autoplay="" muted="" playsinline="" class="h-full w-auto object-contain" onended="this.pause(); this.currentTime = this.duration - 0.1;">
+        <source src="assets/video/logo.mp4" type="video/mp4">
+    </video>
+</div>
+<ul class="hidden md:flex gap-gutter items-center font-label-md text-label-md">
+<li class=""><a class="text-on-primary/70 hover:text-on-primary hover:bg-on-primary/10 transition-colors px-2 py-1 rounded" href="#vision">الرؤية</a></li>
+<li class=""><a class="text-on-primary/70 hover:text-on-primary hover:bg-on-primary/10 transition-colors px-2 py-1 rounded" href="#identity">الهوية</a></li>
+<li class=""><a class="text-on-primary/70 hover:text-on-primary hover:bg-on-primary/10 transition-colors px-2 py-1 rounded" href="#archive">الأرشيف</a></li>
+<li class=""><a class="text-on-primary/70 hover:text-on-primary hover:bg-on-primary/10 transition-colors px-2 py-1 rounded" href="#contact">تواصل معنا</a></li>
+</ul>
+<a class="hidden md:inline-flex items-center justify-center font-label-md text-label-md bg-on-primary text-primary px-4 py-2 rounded-DEFAULT hover:bg-surface-container-highest transition-colors" href="#initiative">
+            المبادرة
+        </a>
+<button class="md:hidden text-on-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<!-- Hero Section -->
+<header class="relative w-full h-screen flex flex-col justify-center items-center text-center pt-24 overflow-hidden border-b border-on-primary/10">
+<div class="absolute inset-0 z-0 bg-primary">
+<!-- Video Placeholder -->
+<video autoplay="" class="w-full h-full object-cover opacity-60" id="hero-video" muted="" playsinline="">
+<!-- Source would go here, using a solid color placeholder for now as per instructions -->
+</video>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop fade-in-up visible">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg mb-base text-on-primary">
+                عزنا بسبتمبر
+            </h1>
+<p class="font-body-lg text-body-lg text-on-primary/80 max-w-2xl mx-auto">
+                هوية وطنية تعكس الفخر والاعتزاز بمنجزات الثورة والجمهورية.
+            </p>
+</div>
+</header>
+<!-- The Vision -->
+<section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop border-b border-on-primary/10 bg-primary" id="vision">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="fade-in-up visible">
+<h2 class="font-headline-lg text-headline-lg mb-8 text-on-primary">الرؤية</h2>
+<p class="font-body-md text-body-md text-on-primary/80 mb-6">
+                    رؤيتنا تنبثق من جذور التاريخ، نحمل إرث سبتمبر ونمضي به نحو المستقبل. نسعى لبناء مجتمع يعتز بهويته، مستلهماً من تضحيات الماضي لبناء غدٍ مشرق.
+                </p>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-on-primary">visibility</span>
+<p class="font-body-md text-body-md text-on-primary/80">استشراف المستقبل بروح وطنية متجددة.</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-on-primary">public</span>
+<p class="font-body-md text-body-md text-on-primary/80">تعزيز الحضور الوطني على كافة المستويات.</p>
+</div>
+</div>
+</div>
+<div class="relative h-96 fade-in-up visible" style="transition-delay: 0.2s;">
+<div class="absolute inset-0 border border-on-primary/20 p-2">
+<img class="w-full h-full object-cover filter grayscale" data-alt="A sweeping, dramatic black and white architectural photograph of a modern, minimalist governmental building facade. The structure features sheer, monumental walls and clean geometric lines. The lighting is harsh and high-contrast, casting deep black shadows against stark white surfaces. The aesthetic conveys authority, stability, and enduring institutional strength in a minimalist luxury style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7YbMpZ9577s1eQCXkOZRVdhIwvb5zo6ovXRS6bPVSDQp9dqZLm_-tQSnYIAonSVxVcgA0Mg_xgexcrBUrRlOfC4s7wpI0pLEYy6V2gI35rLjtPkLEztEEbQohgGSTupk5FEkZA3rc_g0xWAPilYXAlllqDhLLGp_SfacnoJOAKTI0_Ri5RT_qgrnG0dTpk_YZEwV_-61yxDMI-kfw8Qie6sQlDaegzOtFMZfWIiLNqr9J8Yz-HiBLrw">
+</div>
+</div>
+</div>
+</section>
+<!-- The Identity -->
+<section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop border-b border-on-primary/10 bg-primary" id="identity">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16 fade-in-up visible">
+<h2 class="font-headline-lg text-headline-lg mb-4 text-on-primary">الهوية</h2>
+<p class="font-body-lg text-body-lg text-on-primary/80 max-w-2xl mx-auto">ملامح الهوية الوطنية المتأصلة في عمق التاريخ والمواكبة للعصر.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="border border-on-primary/20 p-8 fade-in-up flex flex-col items-center text-center hover:bg-on-primary/5 transition-colors visible">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwW4nBSbKePyqOaHdQGL-n2XErp1uWtnItwwcWU4E_eAHz1QOVTFk3IV2tEmAMrs0iJ7F3wUQmTEOhrq72y5XA9HM3hl-X4WaAAvp1p_OaxstR9boYVaS9ViddRbZNZYkyaN9fC4LSHjyUhfXFWkdF6dTjSUn14Nf77AIuhN1EN-wzNn3NJ-ryfFE6yL89vNmz8Ki00krk-bQXtUUgT-hOhaHJ_lbnfDJr-gLNbkDDpUHHcZ7SbaOu1Q" alt="Heritage Icons" class="h-16 w-16 object-contain mb-6 filter grayscale">
+<h3 class="font-headline-md text-headline-md mb-4 text-on-primary">التراث الأصيل</h3>
+<p class="font-body-md text-body-md text-on-primary/70">نحافظ على تراثنا كركيزة أساسية لهويتنا المعاصرة.</p>
+</div>
+<div class="border border-on-primary/20 p-8 fade-in-up flex flex-col items-center text-center hover:bg-on-primary/5 transition-colors visible" style="transition-delay: 0.1s;">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwW4nBSbKePyqOaHdQGL-n2XErp1uWtnItwwcWU4E_eAHz1QOVTFk3IV2tEmAMrs0iJ7F3wUQmTEOhrq72y5XA9HM3hl-X4WaAAvp1p_OaxstR9boYVaS9ViddRbZNZYkyaN9fC4LSHjyUhfXFWkdF6dTjSUn14Nf77AIuhN1EN-wzNn3NJ-ryfFE6yL89vNmz8Ki00krk-bQXtUUgT-hOhaHJ_lbnfDJr-gLNbkDDpUHHcZ7SbaOu1Q" alt="Heritage Icons" class="h-16 w-16 object-contain mb-6 filter grayscale">
+<h3 class="font-headline-md text-headline-md mb-4 text-on-primary">الرمزية الوطنية</h3>
+<p class="font-body-md text-body-md text-on-primary/70">رموزنا تمثل عزتنا، ونرفعها عالياً في كل محفل.</p>
+</div>
+<div class="border border-on-primary/20 p-8 fade-in-up flex flex-col items-center text-center hover:bg-on-primary/5 transition-colors visible" style="transition-delay: 0.2s;">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwW4nBSbKePyqOaHdQGL-n2XErp1uWtnItwwcWU4E_eAHz1QOVTFk3IV2tEmAMrs0iJ7F3wUQmTEOhrq72y5XA9HM3hl-X4WaAAvp1p_OaxstR9boYVaS9ViddRbZNZYkyaN9fC4LSHjyUhfXFWkdF6dTjSUn14Nf77AIuhN1EN-wzNn3NJ-ryfFE6yL89vNmz8Ki00krk-bQXtUUgT-hOhaHJ_lbnfDJr-gLNbkDDpUHHcZ7SbaOu1Q" alt="Heritage Icons" class="h-16 w-16 object-contain mb-6 filter grayscale">
+<h3 class="font-headline-md text-headline-md mb-4 text-on-primary">التلاحم المجتمعي</h3>
+<p class="font-body-md text-body-md text-on-primary/70">قوتنا في وحدتنا وتماسك نسيجنا الاجتماعي المتين.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- The Archive -->
+<section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-primary border-b border-on-primary/10" id="archive">
+<div class="max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg mb-12 text-on-primary text-center fade-in-up visible">الأرشيف</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="relative h-64 md:h-80 border border-on-primary/20 fade-in-up group overflow-hidden visible">
+<img class="w-full h-full object-cover filter grayscale transition-transform duration-700 group-hover:scale-105" data-alt="A historical archive document captured in high-contrast black and white photography. The image focuses on a beautifully bound ledger with intricate Arabic calligraphy partially visible. The lighting highlights the texture of the aged paper and the robust, formal binding. The overall mood is solemn, documenting governmental history and enduring national memory." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFBuOq8yg_hLzoOV3yo6A2mplXCB9jX6N3SFK00sA_eiZ3anh1O4gWuKA8doxFApX3c0HH991ZUghd-xxNyZYO5gFZLTzGD6cwaIq7JstwTnOtG1FTQtrLILZWNPVBBdnhTZedz9w8TVx5l8NyhpWkNv3UZWrnp_hze96gRQtTUEcnWNh6FedmtfbJmmoBC6yjdlCrYJ_OFZe4jlYEKGr4mwBR3-QZifioLSP-6N1yKFWofzNBcKEGEw">
+<div class="absolute inset-0 bg-primary/40 flex items-end p-6">
+<h3 class="font-headline-md text-headline-md text-on-primary">الوثائق التاريخية</h3>
+</div>
+</div>
+<div class="relative h-64 md:h-80 border border-on-primary/20 fade-in-up group overflow-hidden visible" style="transition-delay: 0.2s;">
+<img class="w-full h-full object-cover filter grayscale transition-transform duration-700 group-hover:scale-105" data-alt="A stark, minimalist black and white photograph of an old metallic governmental seal or emblem resting on a polished dark surface. The heavy contrast accentuates the embossed details of the seal, conveying a sense of authority, official sanction, and timeless institutional prestige. The aesthetic is clean, sharp, and slightly mysterious." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAe9F7gJpg_c5Kls9xheWKmnjhjRvojnJFfS3kpr1rUC_jYQsXnux-PGo_ZI4ntjA7nzDtV1CfvHESf--cqfTNTx-yY6MhEeONCVqeUKkMgGKbIqTPVc6F2c-p4IL1hQzfgF08z29sQ5Ib91YsSuVOzxToQEw7SLQFd5G-02aSooreqItkY-Fs6WpeSu_PGah6XY3hAiQjheQKLkkmgR98Q_PiKpUD9tcExYZ_lAnp4TfX8oq4H66zFA">
+<div class="absolute inset-0 bg-primary/40 flex items-end p-6">
+<h3 class="font-headline-md text-headline-md text-on-primary">الرموز الوطنية</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-16 flex flex-col items-center gap-base bg-primary border-t border-on-primary/20">
+<div class="text-headline-md font-headline-md text-on-primary mb-8">
+            عزنا بسبتمبر
+        </div>
+<ul class="flex flex-wrap justify-center gap-6 font-label-md text-label-md text-on-primary/60 mb-8">
+<li class=""><a class="hover:text-on-primary underline transition-all opacity-80 hover:opacity-100" href="#">سياسة الخصوصية</a></li>
+<li class=""><a class="hover:text-on-primary underline transition-all opacity-80 hover:opacity-100" href="#">شروط الاستخدام</a></li>
+<li class=""><a class="hover:text-on-primary underline transition-all opacity-80 hover:opacity-100" href="#">المركز الإعلامي</a></li>
+<li class=""><a class="hover:text-on-primary underline transition-all opacity-80 hover:opacity-100" href="#contact">اتصل بنا</a></li>
+</ul>
+<div class="font-body-md text-body-md text-on-primary/60 text-center">
+            © ٢٠٢٤ عزنا بسبتمبر - جميع الحقوق محفوظة
+        </div>
+</footer>
+<script>
+        // Intersection Observer for scroll animations
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach((elem) => {
+                observer.observe(elem);
+            });
+
+            // Video logic
+            const video = document.getElementById('hero-video');
+            if(video) {
+                video.addEventListener('ended', () => { 
+                    video.pause(); 
+                    video.currentTime = Math.max(0, video.duration - 0.1); 
+                });
+                // Simulate video duration for the placeholder to avoid immediate stop if needed, 
+                // but real video will trigger 'ended' event naturally.
+            }
+        });
+    </script>
+
+
+</body></html>
