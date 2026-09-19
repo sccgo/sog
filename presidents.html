@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-ar="الرؤساء — عزنا بسبتمبر" data-en="Presidents — Our September Pride">الرؤساء — عزنا بسبتمبر</title>
+<link rel="stylesheet" href="css/style.css">
+<script>
+(function(){
+  var ICONS = {
+    building: '<rect x="3" y="9" width="18" height="12"/><path d="M3 9 12 3l9 6"/>',
+    medal: '<circle cx="12" cy="8" r="5"/><path d="m8.5 13-2 8 5.5-3 5.5 3-2-8"/>',
+    book: '<path d="M4 5c3-1.5 5.5-1.5 8 0v14c-2.5-1.5-5-1.5-8 0Z"/><path d="M20 5c-3-1.5-5.5-1.5-8 0v14c2.5-1.5 5-1.5 8 0Z"/>',
+    flag: '<path d="M6 3v18"/><path d="M6 4h11l-2.5 3.5L17 11H6"/>',
+    people: '<path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/><circle cx="12" cy="8" r="4"/>',
+    doc: '<rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 15l5-5 4 4 5-6 4 5"/>',
+    logo: '<path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z"/><path d="m9 12 2 2 4-4"/>',
+    person: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1.6-4.5 4.8-7 8-7s6.4 2.5 8 7"/>'
+  };
+  function svgIcon(key, size){
+    var p = ICONS[key] || ICONS.doc;
+    var s = size || 34;
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="' + s + '" height="' + s + '">' + p + '</svg>';
+  }
+  function lang(){
+    return window.currentLang || (localStorage.getItem('site-lang') === 'en' ? 'en' : 'ar');
+  }
+  /* generic placeholder box: used when a content photo is missing */
+  window.imgFallback = function(img, opts){
+    opts = opts || {};
+    var div = document.createElement('div');
+    div.className = 'img-placeholder';
+    if (opts.ratio) div.style.aspectRatio = opts.ratio;
+    div.innerHTML = svgIcon(opts.icon, 34);
+    var span = document.createElement('span');
+    span.setAttribute('data-ar', opts.ar || '');
+    span.setAttribute('data-en', opts.en || opts.ar || '');
+    span.textContent = lang() === 'en' ? (opts.en || opts.ar || '') : (opts.ar || '');
+    div.appendChild(span);
+    if (img && img.replaceWith) img.replaceWith(div);
+  };
+  /* small header / hero logo mark: just swap in an icon, no box */
+  window.logoFallback = function(img){
+    if (img && img.parentElement) img.parentElement.innerHTML = svgIcon('logo', 20);
+  };
+  /* round president photo: swap in a person icon */
+  window.personPhotoFallback = function(img){
+    if (img && img.parentElement){
+      img.parentElement.innerHTML = svgIcon('person', 40);
+      var svg = img.parentElement.querySelector('svg');
+      if (svg){ svg.style.margin = '36px auto'; svg.style.display = 'block'; svg.style.color = 'var(--text-dim)'; }
+    }
+  };
+  /* small flag chip: just hide it if the flag image is missing */
+  window.flagFallback = function(img){
+    if (img && img.parentElement) img.parentElement.style.display = 'none';
+  };
+  /* hero logo video: fall back to the still image if the clip can't load */
+  window.heroVideoFallback = function(video){
+    if (video) video.style.display = 'none';
+    var img = document.getElementById('hero-logo-img');
+    if (img) img.style.display = 'block';
+  };
+})();
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap header-flex">
+    <div class="brand-cluster">
+      <a href="index.html" class="brand-logo-link">
+        <span class="brand-logo">
+          <img src="images/logo.png" alt="شعار عزنا بسبتمبر" data-alt-ar="شعار عزنا بسبتمبر" data-alt-en="Our September Pride logo" loading="lazy"
+               onerror="logoFallback(this)">
+        </span>
+      </a>
+      <span class="header-divider" aria-hidden="true"></span>
+    </div>
+
+    <div class="nav-cluster">
+      <ul class="nav-group">
+        <li><a href="index.html" class="nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+        <li><a href="about.html" class="nav-link" data-ar="التعريف" data-en="About">التعريف</a></li>
+        <li><a href="presidents.html" class="nav-link" data-ar="الرؤساء" data-en="Presidents">الرؤساء</a></li>
+        <li><a href="history.html" class="nav-link" data-ar="التاريخ" data-en="History">التاريخ</a></li>
+        <li><a href="archive.html" class="nav-link" data-ar="الأرشيف" data-en="Archive">الأرشيف</a></li>
+        <li><a href="contact.html" class="nav-link" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+      </ul>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language / تبديل اللغة">EN</button>
+      <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false"><span></span></button>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+      <a href="about.html" class="nav-link" data-ar="التعريف" data-en="About">التعريف</a>
+      <a href="presidents.html" class="nav-link" data-ar="الرؤساء" data-en="Presidents">الرؤساء</a>
+      <a href="history.html" class="nav-link" data-ar="التاريخ" data-en="History">التاريخ</a>
+      <a href="archive.html" class="nav-link" data-ar="الأرشيف" data-en="Archive">الأرشيف</a>
+      <a href="contact.html" class="nav-link" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-header">
+    <span class="hero-eyebrow" data-ar="قيادات المرحلة" data-en="Leaders of the Era">قيادات المرحلة</span>
+    <h1 data-ar="الرؤساء" data-en="Presidents">الرؤساء</h1>
+    <p class="lead" data-ar="سيرة القيادات التي تعاقبت على قيادة الجمهورية منذ قيام الثورة، وأبرز محطات كل عهد."
+       data-en="Biographies of the leaders who have led the Republic since the revolution, and the key milestones of each era.">
+       سيرة القيادات التي تعاقبت على قيادة الجمهورية منذ قيام الثورة، وأبرز محطات كل عهد.
+    </p>
+  </section>
+
+  <section class="section" style="border-bottom:none">
+    <div class="wrap">
+
+      <!-- ---------- مسار الرئاسة (خط زمني مصغّر للتنقل بين البطاقات) ---------- -->
+      <nav class="succession-track reveal" aria-label="مسار الرئاسة">
+        <button class="succession-node" type="button" data-target="president-1">
+          <span class="succession-dot"></span>
+          <span class="succession-year">١٩٦٢</span>
+          <span class="succession-name" data-ar="الرئيس الأول" data-en="1st President">الرئيس الأول</span>
+        </button>
+        <button class="succession-node" type="button" data-target="president-2">
+          <span class="succession-dot"></span>
+          <span class="succession-year" data-ar="—" data-en="—">—</span>
+          <span class="succession-name" data-ar="الرئيس الثاني" data-en="2nd President">الرئيس الثاني</span>
+        </button>
+        <button class="succession-node" type="button" data-target="president-3">
+          <span class="succession-dot"></span>
+          <span class="succession-year" data-ar="—" data-en="—">—</span>
+          <span class="succession-name" data-ar="الرئيس الثالث" data-en="3rd President">الرئيس الثالث</span>
+        </button>
+        <button class="succession-node" type="button" data-target="president-4">
+          <span class="succession-dot"></span>
+          <span class="succession-year" data-ar="—" data-en="—">—</span>
+          <span class="succession-name" data-ar="الرئيس الرابع" data-en="4th President">الرئيس الرابع</span>
+        </button>
+        <button class="succession-node" type="button" data-target="president-5">
+          <span class="succession-dot"></span>
+          <span class="succession-year" data-ar="—" data-en="—">—</span>
+          <span class="succession-name" data-ar="الرئيس الخامس" data-en="5th President">الرئيس الخامس</span>
+        </button>
+        <button class="succession-node" type="button" data-target="president-6">
+          <span class="succession-dot"></span>
+          <span class="succession-year" data-ar="حتى الآن" data-en="Present">حتى الآن</span>
+          <span class="succession-name" data-ar="الرئيس الحالي" data-en="Current President">الرئيس الحالي</span>
+        </button>
+      </nav>
+
+      <div class="people-grid reveal-stagger">
+
+        <div class="person-card" id="president-1">
+          <span class="person-order">٠١</span>
+          <div class="person-photo">
+            <img src="images/president-1.jpg" alt="صورة الرئيس الأول" data-alt-ar="صورة الرئيس الأول" data-alt-en="First President's photo" loading="lazy"
+                 onerror="personPhotoFallback(this)">
+          </div>
+          <div class="person-flag-row">
+            <span class="person-flag">
+              <img src="images/flag-1.jpg" alt="علم الدولة الأولى" data-alt-ar="علم الدولة الأولى" data-alt-en="Flag of the 1st country" loading="lazy"
+                   onerror="flagFallback(this)">
+            </span>
+            <span class="person-country" data-ar="اسم الدولة الأولى" data-en="1st Country Name">اسم الدولة الأولى</span>
+          </div>
+          <h3 data-ar="اسم الرئيس الأول" data-en="First President's Name">اسم الرئيس الأول</h3>
+          <span class="person-role" data-ar="رئيس الجمهورية" data-en="President of the Republic">رئيس الجمهورية</span>
+          <p class="bio" data-ar="أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم." data-en="Add a brief biography of the president and key achievements during his term here.">أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم.</p>
+          <ul class="person-achievements">
+            <li><span class="dot">✓</span><span data-ar="أضف أول إنجاز هنا" data-en="Add first achievement here">أضف أول إنجاز هنا</span></li>
+            <li><span class="dot">✓</span><span data-ar="أضف ثاني إنجاز هنا" data-en="Add second achievement here">أضف ثاني إنجاز هنا</span></li>
+          </ul>
+          <div class="person-term-bar"><span class="person-term-bar-fill" style="--fill:18%"></span></div>
+          <div class="person-term" data-ar="١٩٦٢ – ١٩٦٧ / ضع الفترة الرئاسية هنا" data-en="1962 – 1967 / Add the presidential term here">١٩٦٢ – ١٩٦٧ / ضع الفترة الرئاسية هنا</div>
+        </div>
+
+        <div class="person-card" id="president-2">
+          <span class="person-order">٠٢</span>
+          <div class="person-photo">
+            <img src="images/president-2.jpg" alt="صورة الرئيس الثاني" data-alt-ar="صورة الرئيس الثاني" data-alt-en="Second President's photo" loading="lazy"
+                 onerror="personPhotoFallback(this)">
+          </div>
+          <div class="person-flag-row">
+            <span class="person-flag">
+              <img src="images/flag-2.jpg" alt="علم الدولة الثانية" data-alt-ar="علم الدولة الثانية" data-alt-en="Flag of the 2nd country" loading="lazy"
+                   onerror="flagFallback(this)">
+            </span>
+            <span class="person-country" data-ar="اسم الدولة الثانية" data-en="2nd Country Name">اسم الدولة الثانية</span>
+          </div>
+          <h3 data-ar="اسم الرئيس الثاني" data-en="Second President's Name">اسم الرئيس الثاني</h3>
+          <span class="person-role" data-ar="رئيس الجمهورية" data-en="President of the Republic">رئيس الجمهورية</span>
+          <p class="bio" data-ar="أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم." data-en="Add a brief biography of the president and key achievements during his term here.">أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم.</p>
+          <ul class="person-achievements">
+            <li><span class="dot">✓</span><span data-ar="أضف أول إنجاز هنا" data-en="Add first achievement here">أضف أول إنجاز هنا</span></li>
+            <li><span class="dot">✓</span><span data-ar="أضف ثاني إنجاز هنا" data-en="Add second achievement here">أضف ثاني إنجاز هنا</span></li>
+          </ul>
+          <div class="person-term-bar"><span class="person-term-bar-fill" style="--fill:10%"></span></div>
+          <div class="person-term" data-ar="ضع الفترة الرئاسية هنا" data-en="Add the presidential term here">ضع الفترة الرئاسية هنا</div>
+        </div>
+
+        <div class="person-card" id="president-3">
+          <span class="person-order">٠٣</span>
+          <div class="person-photo">
+            <img src="images/president-3.jpg" alt="صورة الرئيس الثالث" data-alt-ar="صورة الرئيس الثالث" data-alt-en="Third President's photo" loading="lazy"
+                 onerror="personPhotoFallback(this)">
+          </div>
+          <div class="person-flag-row">
+            <span class="person-flag">
+              <img src="images/flag-3.jpg" alt="علم الدولة الثالثة" data-alt-ar="علم الدولة الثالثة" data-alt-en="Flag of the 3rd country" loading="lazy"
+                   onerror="flagFallback(this)">
+            </span>
+            <span class="person-country" data-ar="اسم الدولة الثالثة" data-en="3rd Country Name">اسم الدولة الثالثة</span>
+          </div>
+          <h3 data-ar="اسم الرئيس الثالث" data-en="Third President's Name">اسم الرئيس الثالث</h3>
+          <span class="person-role" data-ar="رئيس الجمهورية" data-en="President of the Republic">رئيس الجمهورية</span>
+          <p class="bio" data-ar="أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم." data-en="Add a brief biography of the president and key achievements during his term here.">أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم.</p>
+          <ul class="person-achievements">
+            <li><span class="dot">✓</span><span data-ar="أضف أول إنجاز هنا" data-en="Add first achievement here">أضف أول إنجاز هنا</span></li>
+            <li><span class="dot">✓</span><span data-ar="أضف ثاني إنجاز هنا" data-en="Add second achievement here">أضف ثاني إنجاز هنا</span></li>
+          </ul>
+          <div class="person-term-bar"><span class="person-term-bar-fill" style="--fill:22%"></span></div>
+          <div class="person-term" data-ar="ضع الفترة الرئاسية هنا" data-en="Add the presidential term here">ضع الفترة الرئاسية هنا</div>
+        </div>
+
+        <div class="person-card" id="president-4">
+          <span class="person-order">٠٤</span>
+          <div class="person-photo">
+            <img src="images/president-4.jpg" alt="صورة الرئيس الرابع" data-alt-ar="صورة الرئيس الرابع" data-alt-en="Fourth President's photo" loading="lazy"
+                 onerror="personPhotoFallback(this)">
+          </div>
+          <div class="person-flag-row">
+            <span class="person-flag">
+              <img src="images/flag-4.jpg" alt="علم الدولة الرابعة" data-alt-ar="علم الدولة الرابعة" data-alt-en="Flag of the 4th country" loading="lazy"
+                   onerror="flagFallback(this)">
+            </span>
+            <span class="person-country" data-ar="اسم الدولة الرابعة" data-en="4th Country Name">اسم الدولة الرابعة</span>
+          </div>
+          <h3 data-ar="اسم الرئيس الرابع" data-en="Fourth President's Name">اسم الرئيس الرابع</h3>
+          <span class="person-role" data-ar="رئيس الجمهورية" data-en="President of the Republic">رئيس الجمهورية</span>
+          <p class="bio" data-ar="أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم." data-en="Add a brief biography of the president and key achievements during his term here.">أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم.</p>
+          <ul class="person-achievements">
+            <li><span class="dot">✓</span><span data-ar="أضف أول إنجاز هنا" data-en="Add first achievement here">أضف أول إنجاز هنا</span></li>
+            <li><span class="dot">✓</span><span data-ar="أضف ثاني إنجاز هنا" data-en="Add second achievement here">أضف ثاني إنجاز هنا</span></li>
+          </ul>
+          <div class="person-term-bar"><span class="person-term-bar-fill" style="--fill:15%"></span></div>
+          <div class="person-term" data-ar="ضع الفترة الرئاسية هنا" data-en="Add the presidential term here">ضع الفترة الرئاسية هنا</div>
+        </div>
+
+        <div class="person-card" id="president-5">
+          <span class="person-order">٠٥</span>
+          <div class="person-photo">
+            <img src="images/president-5.jpg" alt="صورة الرئيس الخامس" data-alt-ar="صورة الرئيس الخامس" data-alt-en="Fifth President's photo" loading="lazy"
+                 onerror="personPhotoFallback(this)">
+          </div>
+          <div class="person-flag-row">
+            <span class="person-flag">
+              <img src="images/flag-5.jpg" alt="علم الدولة الخامسة" data-alt-ar="علم الدولة الخامسة" data-alt-en="Flag of the 5th country" loading="lazy"
+                   onerror="flagFallback(this)">
+            </span>
+            <span class="person-country" data-ar="اسم الدولة الخامسة" data-en="5th Country Name">اسم الدولة الخامسة</span>
+          </div>
+          <h3 data-ar="اسم الرئيس الخامس" data-en="Fifth President's Name">اسم الرئيس الخامس</h3>
+          <span class="person-role" data-ar="رئيس الجمهورية" data-en="President of the Republic">رئيس الجمهورية</span>
+          <p class="bio" data-ar="أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم." data-en="Add a brief biography of the president and key achievements during his term here.">أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم.</p>
+          <ul class="person-achievements">
+            <li><span class="dot">✓</span><span data-ar="أضف أول إنجاز هنا" data-en="Add first achievement here">أضف أول إنجاز هنا</span></li>
+            <li><span class="dot">✓</span><span data-ar="أضف ثاني إنجاز هنا" data-en="Add second achievement here">أضف ثاني إنجاز هنا</span></li>
+          </ul>
+          <div class="person-term-bar"><span class="person-term-bar-fill" style="--fill:12%"></span></div>
+          <div class="person-term" data-ar="ضع الفترة الرئاسية هنا" data-en="Add the presidential term here">ضع الفترة الرئاسية هنا</div>
+        </div>
+
+        <div class="person-card" id="president-6">
+          <span class="person-order">٠٦</span>
+          <div class="person-photo">
+            <img src="images/president-6.jpg" alt="صورة الرئيس الحالي" data-alt-ar="صورة الرئيس الحالي" data-alt-en="Current President's photo" loading="lazy"
+                 onerror="personPhotoFallback(this)">
+          </div>
+          <div class="person-flag-row">
+            <span class="person-flag">
+              <img src="images/flag-6.jpg" alt="علم الدولة السادسة" data-alt-ar="علم الدولة السادسة" data-alt-en="Flag of the 6th country" loading="lazy"
+                   onerror="flagFallback(this)">
+            </span>
+            <span class="person-country" data-ar="اسم الدولة السادسة" data-en="6th Country Name">اسم الدولة السادسة</span>
+          </div>
+          <h3 data-ar="اسم الرئيس الحالي" data-en="Current President's Name">اسم الرئيس الحالي</h3>
+          <span class="person-role" data-ar="رئيس الجمهورية" data-en="President of the Republic">رئيس الجمهورية</span>
+          <p class="bio" data-ar="أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم." data-en="Add a brief biography of the president and key achievements during his term here.">أضف هنا نبذة موجزة عن سيرة الرئيس وأبرز إنجازاته خلال فترة توليه الحكم.</p>
+          <ul class="person-achievements">
+            <li><span class="dot">✓</span><span data-ar="أضف أول إنجاز هنا" data-en="Add first achievement here">أضف أول إنجاز هنا</span></li>
+            <li><span class="dot">✓</span><span data-ar="أضف ثاني إنجاز هنا" data-en="Add second achievement here">أضف ثاني إنجاز هنا</span></li>
+          </ul>
+          <div class="person-term-bar"><span class="person-term-bar-fill" style="--fill:23%"></span></div>
+          <div class="person-term" data-ar="حتى الآن" data-en="Present">حتى الآن</div>
+        </div>
+
+      </div>
+
+      <p class="form-note reveal" style="text-align:center;margin-top:50px"
+         data-ar="ملاحظة: الأسماء والفترات والعلم واسم الدولة أعلاه عناصر نائبة (placeholder) — استبدلها بالبيانات الرسمية الدقيقة."
+         data-en="Note: the names, terms, flag, and country name above are placeholders — replace them with accurate official information.">
+         ملاحظة: الأسماء والفترات والعلم واسم الدولة أعلاه عناصر نائبة (placeholder) — استبدلها بالبيانات الرسمية الدقيقة.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-brand" data-ar="عزنا بسبتمبر" data-en="Our September Pride">عزنا بسبتمبر</div>
+    <ul class="footer-links">
+      <li><a href="contact.html" data-ar="تواصل بنا" data-en="Contact Us">تواصل بنا</a></li>
+      <li><a href="#" data-ar="المركز الإعلامي" data-en="Media Center">المركز الإعلامي</a></li>
+      <li><a href="#" data-ar="شروط الاستخدام" data-en="Terms of Use">شروط الاستخدام</a></li>
+      <li><a href="#" data-ar="سياسة الخصوصية" data-en="Privacy Policy">سياسة الخصوصية</a></li>
+    </ul>
+    <div class="footer-bottom" data-ar="© عزنا بسبتمبر ٢٠٢٦ — جميع الحقوق محفوظة" data-en="© Our September Pride 2026 — All rights reserved">© عزنا بسبتمبر ٢٠٢٦ — جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-ar="التعريف — عزنا بسبتمبر" data-en="About — Our September Pride">التعريف — عزنا بسبتمبر</title>
+<link rel="stylesheet" href="css/style.css">
+<script>
+(function(){
+  var ICONS = {
+    building: '<rect x="3" y="9" width="18" height="12"/><path d="M3 9 12 3l9 6"/>',
+    medal: '<circle cx="12" cy="8" r="5"/><path d="m8.5 13-2 8 5.5-3 5.5 3-2-8"/>',
+    book: '<path d="M4 5c3-1.5 5.5-1.5 8 0v14c-2.5-1.5-5-1.5-8 0Z"/><path d="M20 5c-3-1.5-5.5-1.5-8 0v14c2.5-1.5 5-1.5 8 0Z"/>',
+    flag: '<path d="M6 3v18"/><path d="M6 4h11l-2.5 3.5L17 11H6"/>',
+    people: '<path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/><circle cx="12" cy="8" r="4"/>',
+    doc: '<rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 15l5-5 4 4 5-6 4 5"/>',
+    logo: '<path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z"/><path d="m9 12 2 2 4-4"/>',
+    person: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1.6-4.5 4.8-7 8-7s6.4 2.5 8 7"/>'
+  };
+  function svgIcon(key, size){
+    var p = ICONS[key] || ICONS.doc;
+    var s = size || 34;
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="' + s + '" height="' + s + '">' + p + '</svg>';
+  }
+  function lang(){
+    return window.currentLang || (localStorage.getItem('site-lang') === 'en' ? 'en' : 'ar');
+  }
+  /* generic placeholder box: used when a content photo is missing */
+  window.imgFallback = function(img, opts){
+    opts = opts || {};
+    var div = document.createElement('div');
+    div.className = 'img-placeholder';
+    if (opts.ratio) div.style.aspectRatio = opts.ratio;
+    div.innerHTML = svgIcon(opts.icon, 34);
+    var span = document.createElement('span');
+    span.setAttribute('data-ar', opts.ar || '');
+    span.setAttribute('data-en', opts.en || opts.ar || '');
+    span.textContent = lang() === 'en' ? (opts.en || opts.ar || '') : (opts.ar || '');
+    div.appendChild(span);
+    if (img && img.replaceWith) img.replaceWith(div);
+  };
+  /* small header / hero logo mark: just swap in an icon, no box */
+  window.logoFallback = function(img){
+    if (img && img.parentElement) img.parentElement.innerHTML = svgIcon('logo', 20);
+  };
+  /* round president photo: swap in a person icon */
+  window.personPhotoFallback = function(img){
+    if (img && img.parentElement){
+      img.parentElement.innerHTML = svgIcon('person', 40);
+      var svg = img.parentElement.querySelector('svg');
+      if (svg){ svg.style.margin = '36px auto'; svg.style.display = 'block'; svg.style.color = 'var(--text-dim)'; }
+    }
+  };
+  /* small flag chip: just hide it if the flag image is missing */
+  window.flagFallback = function(img){
+    if (img && img.parentElement) img.parentElement.style.display = 'none';
+  };
+  /* hero logo video: fall back to the still image if the clip can't load */
+  window.heroVideoFallback = function(video){
+    if (video) video.style.display = 'none';
+    var img = document.getElementById('hero-logo-img');
+    if (img) img.style.display = 'block';
+  };
+})();
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap header-flex">
+    <div class="brand-cluster">
+      <a href="index.html" class="brand-logo-link">
+        <span class="brand-logo">
+          <img src="images/logo.png" alt="شعار عزنا بسبتمبر" data-alt-ar="شعار عزنا بسبتمبر" data-alt-en="Our September Pride logo" loading="lazy"
+               onerror="logoFallback(this)">
+        </span>
+      </a>
+      <span class="header-divider" aria-hidden="true"></span>
+    </div>
+
+    <div class="nav-cluster">
+      <ul class="nav-group">
+        <li><a href="index.html" class="nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+        <li><a href="about.html" class="nav-link" data-ar="التعريف" data-en="About">التعريف</a></li>
+        <li><a href="presidents.html" class="nav-link" data-ar="الرؤساء" data-en="Presidents">الرؤساء</a></li>
+        <li><a href="history.html" class="nav-link" data-ar="التاريخ" data-en="History">التاريخ</a></li>
+        <li><a href="archive.html" class="nav-link" data-ar="الأرشيف" data-en="Archive">الأرشيف</a></li>
+        <li><a href="contact.html" class="nav-link" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+      </ul>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language / تبديل اللغة">EN</button>
+      <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false"><span></span></button>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+      <a href="about.html" class="nav-link" data-ar="التعريف" data-en="About">التعريف</a>
+      <a href="presidents.html" class="nav-link" data-ar="الرؤساء" data-en="Presidents">الرؤساء</a>
+      <a href="history.html" class="nav-link" data-ar="التاريخ" data-en="History">التاريخ</a>
+      <a href="archive.html" class="nav-link" data-ar="الأرشيف" data-en="Archive">الأرشيف</a>
+      <a href="contact.html" class="nav-link" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-header">
+    <span class="hero-eyebrow" data-ar="من نحن" data-en="Who We Are">من نحن</span>
+    <h1 data-ar="التعريف بالمبادرة" data-en="About the Initiative">التعريف بالمبادرة</h1>
+    <p class="lead" data-ar="مساحة وطنية جامعة تعرّف بمسيرة ثورة سبتمبر، وتحفظ رمزيتها، وتقرّب أجيالنا من قيمها وإنجازاتها."
+       data-en="A unifying national space that introduces the journey of the September revolution, preserves its symbolism, and brings its values and achievements closer to our generations.">
+       مساحة وطنية جامعة تعرّف بمسيرة ثورة سبتمبر، وتحفظ رمزيتها، وتقرّب أجيالنا من قيمها وإنجازاتها.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="wrap split reveal">
+      <div class="split-media">
+        <img src="images/about-hero.jpg" alt="صورة تعريفية" data-alt-ar="صورة تعريفية" data-alt-en="Introductory photo" loading="lazy"
+             onerror="imgFallback(this,{icon:'doc',ratio:'4/3',ar:'ضع هنا صورة تعريفية — images/about-hero.jpg',en:'Add an introductory photo here — images/about-hero.jpg'})">
+      </div>
+      <div class="split-body">
+        <span class="eyebrow" data-ar="القصة" data-en="The Story">القصة</span>
+        <h3 data-ar="لماذا عزنا بسبتمبر" data-en="Why &quot;Our September Pride&quot;">لماذا عزنا بسبتمبر</h3>
+        <p data-ar="انطلقت هذه المساحة لتكون مرجعًا رقميًا موحّدًا يروي قصة ثورة ٢٦ سبتمبر بأمانة، ويقرّب رموزها وتاريخها ورجالها من كل جيل، بأسلوب بصري يليق بمكانتها في الذاكرة الوطنية."
+           data-en="This space was launched to be a unified digital reference that tells the story of the September 26 revolution faithfully, bringing its symbols, history, and figures closer to every generation, in a visual style befitting its place in the national memory.">
+           انطلقت هذه المساحة لتكون مرجعًا رقميًا موحّدًا يروي قصة ثورة ٢٦ سبتمبر بأمانة، ويقرّب رموزها وتاريخها ورجالها من كل جيل، بأسلوب بصري يليق بمكانتها في الذاكرة الوطنية.
+        </p>
+        <ul class="check-list">
+          <li><span class="dot">✓</span><span data-ar="توثيق محطات الثورة والجمهورية بمصداقية" data-en="Documenting the milestones of the revolution and the republic with credibility">توثيق محطات الثورة والجمهورية بمصداقية</span></li>
+          <li><span class="dot">✓</span><span data-ar="التعريف بقيادات المرحلة ومنجزاتها" data-en="Introducing the era's leaders and their achievements">التعريف بقيادات المرحلة ومنجزاتها</span></li>
+          <li><span class="dot">✓</span><span data-ar="أرشفة الرموز والوثائق التاريخية" data-en="Archiving national symbols and historical documents">أرشفة الرموز والوثائق التاريخية</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="border-bottom:none">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="قيمنا" data-en="Our Values">قيمنا</span>
+        <h2 data-ar="المبادئ التي نصدر عنها" data-en="The Principles We Stand On">المبادئ التي نصدر عنها</h2>
+        <p data-ar="ثلاث ركائز توجّه كل محتوى تقدّمه هذه المساحة" data-en="Three pillars guide every piece of content this space provides">ثلاث ركائز توجّه كل محتوى تقدّمه هذه المساحة</p>
+      </div>
+
+      <div class="grid-3 reveal-stagger">
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z"/></svg>
+          </div>
+          <h3 data-ar="الأمانة التاريخية" data-en="Historical Integrity">الأمانة التاريخية</h3>
+          <p data-ar="نستند إلى مصادر موثوقة في كل ما نوثّقه من أحداث" data-en="We rely on credible sources for everything we document">نستند إلى مصادر موثوقة في كل ما نوثّقه من أحداث</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <h3 data-ar="الاستمرارية" data-en="Continuity">الاستمرارية</h3>
+          <p data-ar="نربط الماضي بالحاضر ونستشرف من خلاله المستقبل" data-en="We connect the past with the present and look ahead to the future through it">نربط الماضي بالحاضر ونستشرف من خلاله المستقبل</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/><circle cx="12" cy="8" r="4"/></svg>
+          </div>
+          <h3 data-ar="الانتماء" data-en="Belonging">الانتماء</h3>
+          <p data-ar="نخاطب كل مواطن ليشعر بأن هذا الإرث إرثه هو" data-en="We speak to every citizen so they feel this legacy is truly their own">نخاطب كل مواطن ليشعر بأن هذا الإرث إرثه هو</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band reveal">
+    <span class="eyebrow" data-ar="تابع القصة" data-en="Follow the Story">تابع القصة</span>
+    <h2 data-ar="تصفّح محطات التاريخ ورجاله" data-en="Browse the milestones of history and its figures">تصفّح محطات التاريخ ورجاله</h2>
+    <p data-ar="انتقل إلى الجدول الزمني لأبرز الأحداث، أو تعرّف على سير الرؤساء" data-en="Go to the timeline of key events, or learn about the presidents' biographies">انتقل إلى الجدول الزمني لأبرز الأحداث، أو تعرّف على سير الرؤساء</p>
+    <a href="history.html" class="btn btn-accent" data-ar="صفحة التاريخ" data-en="History Page">صفحة التاريخ</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-brand" data-ar="عزنا بسبتمبر" data-en="Our September Pride">عزنا بسبتمبر</div>
+    <ul class="footer-links">
+      <li><a href="contact.html" data-ar="تواصل بنا" data-en="Contact Us">تواصل بنا</a></li>
+      <li><a href="#" data-ar="المركز الإعلامي" data-en="Media Center">المركز الإعلامي</a></li>
+      <li><a href="#" data-ar="شروط الاستخدام" data-en="Terms of Use">شروط الاستخدام</a></li>
+      <li><a href="#" data-ar="سياسة الخصوصية" data-en="Privacy Policy">سياسة الخصوصية</a></li>
+    </ul>
+    <div class="footer-bottom" data-ar="© عزنا بسبتمبر ٢٠٢٦ — جميع الحقوق محفوظة" data-en="© Our September Pride 2026 — All rights reserved">© عزنا بسبتمبر ٢٠٢٦ — جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

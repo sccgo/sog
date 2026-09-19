@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-ar="الأرشيف — عزنا بسبتمبر" data-en="Archive — Our September Pride">الأرشيف — عزنا بسبتمبر</title>
+<link rel="stylesheet" href="css/style.css">
+<script>
+(function(){
+  var ICONS = {
+    building: '<rect x="3" y="9" width="18" height="12"/><path d="M3 9 12 3l9 6"/>',
+    medal: '<circle cx="12" cy="8" r="5"/><path d="m8.5 13-2 8 5.5-3 5.5 3-2-8"/>',
+    book: '<path d="M4 5c3-1.5 5.5-1.5 8 0v14c-2.5-1.5-5-1.5-8 0Z"/><path d="M20 5c-3-1.5-5.5-1.5-8 0v14c2.5-1.5 5-1.5 8 0Z"/>',
+    flag: '<path d="M6 3v18"/><path d="M6 4h11l-2.5 3.5L17 11H6"/>',
+    people: '<path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/><circle cx="12" cy="8" r="4"/>',
+    doc: '<rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 15l5-5 4 4 5-6 4 5"/>',
+    logo: '<path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z"/><path d="m9 12 2 2 4-4"/>',
+    person: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1.6-4.5 4.8-7 8-7s6.4 2.5 8 7"/>'
+  };
+  function svgIcon(key, size){
+    var p = ICONS[key] || ICONS.doc;
+    var s = size || 34;
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="' + s + '" height="' + s + '">' + p + '</svg>';
+  }
+  function lang(){
+    return window.currentLang || (localStorage.getItem('site-lang') === 'en' ? 'en' : 'ar');
+  }
+  /* generic placeholder box: used when a content photo is missing */
+  window.imgFallback = function(img, opts){
+    opts = opts || {};
+    var div = document.createElement('div');
+    div.className = 'img-placeholder';
+    if (opts.ratio) div.style.aspectRatio = opts.ratio;
+    div.innerHTML = svgIcon(opts.icon, 34);
+    var span = document.createElement('span');
+    span.setAttribute('data-ar', opts.ar || '');
+    span.setAttribute('data-en', opts.en || opts.ar || '');
+    span.textContent = lang() === 'en' ? (opts.en || opts.ar || '') : (opts.ar || '');
+    div.appendChild(span);
+    if (img && img.replaceWith) img.replaceWith(div);
+  };
+  /* small header / hero logo mark: just swap in an icon, no box */
+  window.logoFallback = function(img){
+    if (img && img.parentElement) img.parentElement.innerHTML = svgIcon('logo', 20);
+  };
+  /* round president photo: swap in a person icon */
+  window.personPhotoFallback = function(img){
+    if (img && img.parentElement){
+      img.parentElement.innerHTML = svgIcon('person', 40);
+      var svg = img.parentElement.querySelector('svg');
+      if (svg){ svg.style.margin = '36px auto'; svg.style.display = 'block'; svg.style.color = 'var(--text-dim)'; }
+    }
+  };
+  /* small flag chip: just hide it if the flag image is missing */
+  window.flagFallback = function(img){
+    if (img && img.parentElement) img.parentElement.style.display = 'none';
+  };
+  /* hero logo video: fall back to the still image if the clip can't load */
+  window.heroVideoFallback = function(video){
+    if (video) video.style.display = 'none';
+    var img = document.getElementById('hero-logo-img');
+    if (img) img.style.display = 'block';
+  };
+})();
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap header-flex">
+    <div class="brand-cluster">
+      <a href="index.html" class="brand-logo-link">
+        <span class="brand-logo">
+          <img src="images/logo.png" alt="شعار عزنا بسبتمبر" data-alt-ar="شعار عزنا بسبتمبر" data-alt-en="Our September Pride logo" loading="lazy"
+               onerror="logoFallback(this)">
+        </span>
+      </a>
+      <span class="header-divider" aria-hidden="true"></span>
+    </div>
+
+    <div class="nav-cluster">
+      <ul class="nav-group">
+        <li><a href="index.html" class="nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+        <li><a href="about.html" class="nav-link" data-ar="التعريف" data-en="About">التعريف</a></li>
+        <li><a href="presidents.html" class="nav-link" data-ar="الرؤساء" data-en="Presidents">الرؤساء</a></li>
+        <li><a href="history.html" class="nav-link" data-ar="التاريخ" data-en="History">التاريخ</a></li>
+        <li><a href="archive.html" class="nav-link" data-ar="الأرشيف" data-en="Archive">الأرشيف</a></li>
+        <li><a href="contact.html" class="nav-link" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+      </ul>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language / تبديل اللغة">EN</button>
+      <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false"><span></span></button>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+      <a href="about.html" class="nav-link" data-ar="التعريف" data-en="About">التعريف</a>
+      <a href="presidents.html" class="nav-link" data-ar="الرؤساء" data-en="Presidents">الرؤساء</a>
+      <a href="history.html" class="nav-link" data-ar="التاريخ" data-en="History">التاريخ</a>
+      <a href="archive.html" class="nav-link" data-ar="الأرشيف" data-en="Archive">الأرشيف</a>
+      <a href="contact.html" class="nav-link" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-header">
+    <span class="hero-eyebrow" data-ar="الذاكرة الوطنية" data-en="National Memory">الذاكرة الوطنية</span>
+    <h1 data-ar="الأرشيف" data-en="Archive">الأرشيف</h1>
+    <p class="lead" data-ar="مجموعة من الرموز والوثائق والصور التاريخية التي توثّق مسيرة الثورة والجمهورية."
+       data-en="A collection of national symbols, documents, and historical photographs documenting the journey of the revolution and the republic.">
+       مجموعة من الرموز والوثائق والصور التاريخية التي توثّق مسيرة الثورة والجمهورية.
+    </p>
+  </section>
+
+  <section class="section" style="border-bottom:none">
+    <div class="wrap">
+      <div class="grid-2 reveal-stagger" style="margin-bottom:1px">
+        <a href="#" class="media-card">
+          <img src="images/am.png" alt="الرموز الوطنية" data-alt-ar="الرموز الوطنية" data-alt-en="National Symbols" loading="lazy"
+               onerror="imgFallback(this,{icon:'medal',ratio:'16/11',ar:'ضع هنا صورة الوسام / الشعار — images/am.png',en:'Add a medal / emblem photo here — images/am.png'})">
+          <span class="media-card-label" data-ar="الرموز الوطنية" data-en="National Symbols">الرموز الوطنية</span>
+        </a>
+        <a href="#" class="media-card">
+          <img src="images/archive-book.jpg" alt="الوثائق التاريخية" data-alt-ar="الوثائق التاريخية" data-alt-en="Historical Documents" loading="lazy"
+               onerror="imgFallback(this,{icon:'book',ratio:'16/11',ar:'ضع هنا صورة الوثيقة — images/archive-book.jpg',en:'Add a document photo here — images/archive-book.jpg'})">
+          <span class="media-card-label" data-ar="الوثائق التاريخية" data-en="Historical Documents">الوثائق التاريخية</span>
+        </a>
+      </div>
+
+      <div class="grid-3 reveal-stagger">
+        <a href="#" class="media-card">
+          <img src="images/archive-flag.jpg" alt="العلم الوطني" data-alt-ar="العلم الوطني" data-alt-en="National Flag" loading="lazy"
+               onerror="imgFallback(this,{icon:'flag',ratio:'16/11',ar:'images/archive-flag.jpg',en:'images/archive-flag.jpg'})">
+          <span class="media-card-label" data-ar="العلم الوطني" data-en="National Flag">العلم الوطني</span>
+        </a>
+        <a href="#" class="media-card">
+          <img src="images/archive-square.jpg" alt="ميادين الثورة" data-alt-ar="ميادين الثورة" data-alt-en="Revolution Squares" loading="lazy"
+               onerror="imgFallback(this,{icon:'building',ratio:'16/11',ar:'images/archive-square.jpg',en:'images/archive-square.jpg'})">
+          <span class="media-card-label" data-ar="ميادين الثورة" data-en="Revolution Squares">ميادين الثورة</span>
+        </a>
+        <a href="#" class="media-card">
+          <img src="images/archive-people.jpg" alt="لحظات من الذاكرة" data-alt-ar="لحظات من الذاكرة" data-alt-en="Moments from Memory" loading="lazy"
+               onerror="imgFallback(this,{icon:'people',ratio:'16/11',ar:'images/archive-people.jpg',en:'images/archive-people.jpg'})">
+          <span class="media-card-label" data-ar="لحظات من الذاكرة" data-en="Moments from Memory">لحظات من الذاكرة</span>
+        </a>
+      </div>
+
+      <p class="form-note reveal" style="text-align:center;margin-top:40px"
+         data-ar="أضف صورك داخل مجلد images/ بنفس الأسماء المذكورة أعلاه لتظهر تلقائيًا بدل العناصر النائبة."
+         data-en="Add your images inside the images/ folder using the same file names listed above so they appear automatically instead of the placeholders.">
+         أضف صورك داخل مجلد images/ بنفس الأسماء المذكورة أعلاه لتظهر تلقائيًا بدل العناصر النائبة.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-brand" data-ar="عزنا بسبتمبر" data-en="Our September Pride">عزنا بسبتمبر</div>
+    <ul class="footer-links">
+      <li><a href="contact.html" data-ar="تواصل بنا" data-en="Contact Us">تواصل بنا</a></li>
+      <li><a href="#" data-ar="المركز الإعلامي" data-en="Media Center">المركز الإعلامي</a></li>
+      <li><a href="#" data-ar="شروط الاستخدام" data-en="Terms of Use">شروط الاستخدام</a></li>
+      <li><a href="#" data-ar="سياسة الخصوصية" data-en="Privacy Policy">سياسة الخصوصية</a></li>
+    </ul>
+    <div class="footer-bottom" data-ar="© عزنا بسبتمبر ٢٠٢٦ — جميع الحقوق محفوظة" data-en="© Our September Pride 2026 — All rights reserved">© عزنا بسبتمبر ٢٠٢٦ — جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
