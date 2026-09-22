@@ -2,6 +2,31 @@
    عزنا بسبتمبر — Shared stylesheet
    =========================================================== */
 
+/* Local custom font slot — drop a file in /fonts (see fonts/README.txt).
+   If no file exists, these simply fail to load and the font-family
+   fallback chain below (Times New Roman etc.) is used instead — safe
+   either way, nothing breaks if the font files are absent. */
+@font-face{
+  font-family:'SiteFont';
+  src:url('../fonts/custom-font.woff2') format('woff2'),
+      url('../fonts/custom-font.woff') format('woff'),
+      url('../fonts/custom-font.ttf') format('truetype'),
+      url('../fonts/custom-font.otf') format('opentype');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:'SiteFont';
+  src:url('../fonts/custom-font-bold.woff2') format('woff2'),
+      url('../fonts/custom-font-bold.woff') format('woff'),
+      url('../fonts/custom-font-bold.ttf') format('truetype'),
+      url('../fonts/custom-font-bold.otf') format('opentype');
+  font-weight:700 900;
+  font-style:normal;
+  font-display:swap;
+}
+
 :root{
   --bg:            #000000;
   --bg-panel:      #0c0c0c;
@@ -14,8 +39,8 @@
   --accent:        #ffffff;
   --accent-dim:    rgba(255,255,255,.4);
 
-  --font-display: 'Times New Roman', Times, 'Traditional Arabic', serif;
-  --font-body:    'Times New Roman', Times, 'Traditional Arabic', serif;
+  --font-display: 'SiteFont', 'Times New Roman', Times, 'Traditional Arabic', serif;
+  --font-body:    'SiteFont', 'Times New Roman', Times, 'Traditional Arabic', serif;
 
   --container: 1140px;
   --radius: 2px;
@@ -259,11 +284,46 @@ p{ margin:0; }
   100%{ top:104%; opacity:0; transform:translateX(-6px) scale(.75); }
 }
 
+/* per-page sparkle shapes — same gentle fall, different silhouette so
+   each page reads as its own place while staying part of one family.
+   Add the matching modifier class next to .sparkle-field:
+     index / template  → (none, default) filled dot
+     about              → .sparkle-field--ring     hollow circle
+     presidents         → .sparkle-field--diamond  filled diamond
+     history            → .sparkle-field--plus     small cross
+     archive            → .sparkle-field--square   hollow square
+     contact            → .sparkle-field--star     small 4-point star */
+.sparkle-field--ring .sparkle{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:none;
+}
+.sparkle-field--square .sparkle{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.75);
+  box-shadow:none;
+  border-radius:1px;
+}
+.sparkle-field--diamond .sparkle{
+  border-radius:1px;
+  box-shadow:none;
+  clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);
+}
+.sparkle-field--plus .sparkle{
+  border-radius:0;
+  box-shadow:none;
+  clip-path:polygon(35% 0%,65% 0%,65% 35%,100% 35%,100% 65%,65% 65%,65% 100%,35% 100%,35% 65%,0% 65%,0% 35%,35% 35%);
+}
+.sparkle-field--star .sparkle{
+  border-radius:0;
+  box-shadow:none;
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+
 .hero-logo{
   width:132px;
   height:132px;
   margin-bottom:34px;
-  border:1px solid var(--border-hover);
   display:grid;
   place-items:center;
   overflow:hidden;
@@ -275,6 +335,11 @@ p{ margin:0; }
   height:100%;
   object-fit:contain;
   background:var(--bg-panel);
+}
+
+.hero-text{
+  direction:ltr;
+  text-align:center;
 }
 
 .hero-eyebrow{
@@ -333,6 +398,7 @@ p{ margin:0; }
 /* ---------- page header (inner pages) ---------- */
 
 .page-header{
+  position:relative;
   padding:170px 32px 70px;
   text-align:center;
   border-bottom:1px solid var(--border);
@@ -521,6 +587,25 @@ p{ margin:0; }
   margin-bottom:10px;
 }
 .card p{ color:var(--text-muted); font-size:.92rem; }
+
+/* clickable variant of .card, used by the homepage "explore" grid */
+a.card{ display:block; text-decoration:none; color:inherit; }
+.card-arrow{
+  margin-top:16px;
+  font-size:.82rem;
+  color:var(--text-dim);
+  display:inline-block;
+  transition:transform .3s var(--ease), color .3s var(--ease);
+}
+a.card:hover .card-arrow{ color:var(--text); transform:translateX(-4px); }
+
+.nav-tiles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
 
 /* ---------- media card (archive-style) ---------- */
 
@@ -856,6 +941,14 @@ p{ margin:0; }
 .cta-band h2{ font-size:clamp(1.6rem,3.4vw,2.3rem); margin-bottom:18px; }
 .cta-band p{ color:var(--text-muted); max-width:48ch; margin:0 auto; }
 .cta-band .btn{ margin-top:34px; }
+.cta-band .btn-row{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:34px;
+}
+.cta-band .btn-row .btn{ margin-top:0; }
 
 /* ---------- buttons ---------- */
 
